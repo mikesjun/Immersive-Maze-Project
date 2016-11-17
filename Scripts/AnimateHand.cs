@@ -1,43 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections; 
+using System.Collections.Generic;
 
 public class AnimateHand : MonoBehaviour, IGvrGazeResponder {
+
+	// Reference to KeyPoof & Door Prefab
+	public Door door = null;
+	public GameObject KeyPoof;
+
 	// Const for our animation speed
 	[Header("Animation")]
 	public float ROTATION_SPEED = 60f;
-	public GameObject KeyPoof;
 
-	[SerializeField]
-	private AudioSource AnimationSound = null;
+
+	//[SerializeField]
+	//private AudioSource AnimationSound = null;
 
 
 	[Header("Sounds")]
 	public AudioClip clip_gaze	= null;
 
 
-		// Use this for initialization
-		void Awake() {
-			SetGazedAt(false);
-			AnimationSound = gameObject.GetComponent<AudioSource>();	
-			AnimationSound.clip = clip_gaze;
-			AnimationSound.playOnAwake 	= false;
-		}
-		
-		// Hand animation is called once per frame - may have to refactor to only rotate when gazed at
-		void Update () {
-			transform.Rotate(Vector3.right, ROTATION_SPEED * Time.deltaTime);
-		}
-
-	public void OnKeyClicked(bool doorUnlocked)
-	{
-		
-
-		// Call the Unlock() method
+	// Use this for initialization
+	void Awake() {
 		SetGazedAt(false);
+//		AnimationSound = gameObject.GetComponent<AudioSource>();	
+//		AnimationSound.clip = clip_gaze;
+//		AnimationSound.playOnAwake 	= false;
+	}
+	
+	// Hand animation is called once per frame - may have to refactor to only rotate when gazed at
+	void Update () {
+		transform.Rotate(Vector3.right, ROTATION_SPEED * Time.deltaTime);
+	}
 
-		if (doorUnlocked == true) {
-			return;
-		}
+	public void OnKeyClicked()
+	{
+		//unused
 
 	}
 
@@ -53,7 +52,6 @@ public class AnimateHand : MonoBehaviour, IGvrGazeResponder {
 	public void OnGazeEnter() {
 		Debug.Log ("Entered Gaze on " + this.gameObject.name);
 		SetGazedAt(true);
-
 	}
 
 	/// Called when the user stops looking on the GameObject, after OnGazeEnter
@@ -66,14 +64,34 @@ public class AnimateHand : MonoBehaviour, IGvrGazeResponder {
 	public void OnGazeTrigger() {
 		// Instatiate the KeyPoof Prefab where this key is located
 		Instantiate (KeyPoof, transform.position, transform.rotation);
-		AnimationSound.Play();
-		if(this.gameObject != null) Destroy (this.gameObject,1.5f);
-		Debug.Log (gameObject.name + " has been destroyed"); 
+			
+		gameObject.GetComponent<AudioSource>().Play();
+		// Call the Door Click() method
+		door.locked = false;
 
+		//Hide object
+		gameObject.GetComponent<MeshRenderer> ().enabled = false;
+		Debug.Log (gameObject.name + " has been destroyed");
+		//sets gaze to false :D
+		SetGazedAt (false);
 	}
 
 	#endregion
 
+	public void Enter()
+	{
+		SetGazedAt(false);
+		//change to highlight color
+		gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+	}
+
+
+	public void Exit()
+	{
+		SetGazedAt(false);
+		//set to origional color
+		gameObject.GetComponent<MeshRenderer>().material.color = Color.clear;
+	}
 
 
 
