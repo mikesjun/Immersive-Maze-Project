@@ -36,6 +36,7 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
     //Create a reference to the CoinPoofPrefab
 
     public void OnCoinClicked() {
+		// Using IGvrGaze for this ---
         // Instantiate the CoinPoof Prefab where this coin is located
         // Make sure the poof animates vertically
         // Destroy this coin. Check the Unity documentation on how to use Destroy
@@ -48,6 +49,9 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
 	public void OnGazeEnter() {
 		Debug.Log ("Entered Gaze on " + this.gameObject.name);
 		SetGazedAt(true);
+		// Instatiate the KeyPoof Prefab where this key is located
+		Instantiate (KeyPoof, transform.position, transform.rotation);
+		//Ding sounds
 		AnimationSound.Play();
 
 	}
@@ -56,14 +60,15 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
 	public void OnGazeExit() {
 		SetGazedAt(false);
 		// TODO fix  "The object of type 'Coin' has been destroyed but you are still trying to access it." issue
-		if(this.gameObject != null) Destroy (this.gameObject);
+		if(this.gameObject != null){
+			gameObject.GetComponent<MeshRenderer>().enabled = false;
+		} 
+		//Destroy (this.gameObject);
 	}
 
 	/// Called when the viewer's trigger is used, between OnGazeEnter and OnGazeExit.
 	public void OnGazeTrigger() {
-		// Instatiate the KeyPoof Prefab where this key is located
-		Instantiate (KeyPoof, transform.position, transform.rotation);
-
+		
 
 	}
 
