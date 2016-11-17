@@ -30,7 +30,6 @@ public class Door : MonoBehaviour
 		{
 			//play a sound
 			gameObject.GetComponent<AudioSource>().Play();
-			//bonus credit : play open animation
 
 			//hide the door and it's collision
 			gameObject.GetComponent<MeshRenderer>().enabled = false;
