@@ -59,7 +59,6 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
 	/// was already called.
 	public void OnGazeExit() {
 		SetGazedAt(false);
-		// TODO fix  "The object of type 'Coin' has been destroyed but you are still trying to access it." issue
 		if(this.gameObject != null){
 			gameObject.GetComponent<MeshRenderer>().enabled = false;
 		} 
