@@ -5,6 +5,13 @@ Project has to have animations, effects, good use of lighting, and must be fun.
 **Note:** _This project took approximately 12 hours (off and on) to complete and is my submission as part of the *"VRND"* or Virtual Reality Nanodegree. I will be using this for these video tutorials._
 **Thoughts** This is one of my favorite projects. Most challenging was triggering the Door class to unlock when the artifact was collected. I like the fact that this project gets pretty into C# and Unity dev.
 
+### Optional [TO DO]:
+
+* Non-diegetic HUD UI for holding timer/points
+ * Simple player timer rendered to World Space
+ * Simple coin counter rendered in a UI
+* Add focus state to Sign Post for better VRUX
+
 
 ## Getting Started
 
