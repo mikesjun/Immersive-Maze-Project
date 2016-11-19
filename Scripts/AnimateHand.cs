@@ -64,6 +64,7 @@ public class AnimateHand : MonoBehaviour, IGvrGazeResponder {
 	public void OnGazeTrigger() {
 		// Instatiate the KeyPoof Prefab where this key is located
 		Instantiate (KeyPoof, transform.position, transform.rotation);
+		//transform.Translate (0, 10 * Time.deltaTime, 0, Space.World);
 			
 		gameObject.GetComponent<AudioSource>().Play();
 		// Call the Door Click() method
