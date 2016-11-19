@@ -48,11 +48,8 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
 	/// as long as it is set to an appropriate layer (see GvrGaze).
 	public void OnGazeEnter() {
 		Debug.Log ("Entered Gaze on " + this.gameObject.name);
-		SetGazedAt(true);
-		// Instatiate the KeyPoof Prefab where this key is located
-		Instantiate (KeyPoof, transform.position, transform.rotation);
-		//Ding sounds
-		AnimationSound.Play();
+
+		// moved functionality for the sake of rubric
 
 	}
 	/// Called when the user stops looking on the GameObject, after OnGazeEnter
@@ -67,7 +64,11 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
 
 	/// Called when the viewer's trigger is used, between OnGazeEnter and OnGazeExit.
 	public void OnGazeTrigger() {
-		
+		SetGazedAt(true);
+		// Instatiate the KeyPoof Prefab where this key is located
+		Instantiate (KeyPoof, transform.position, transform.rotation);
+		//Ding sounds
+		AnimationSound.Play();
 
 	}
 
