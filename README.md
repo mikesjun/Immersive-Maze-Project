@@ -1,7 +1,7 @@
 # VRND Project 3 The Maze README
-
+![Screenshot](http://imgur.com/LAzXvkg "Screenshot1")
 The goal for Udacity's VRND P3, was to design and create an interactive maze scene that is large enough to spend a few minutes moving around. 
-Project has to have animations, effects, good use of lighting, and must be fun. 
+Project has to have animations, effects, good use of lighting, and must be fun. **I've also hidden an easter egg as part of the game**
 **Note:** _This project took approximately 12 hours (off and on) to complete and is my submission as part of the *"VRND"* or Virtual Reality Nanodegree. I will be using this for these video tutorials._
 **Thoughts** This is one of my favorite projects. Most challenging was triggering the Door class to unlock when the artifact was collected. I like the fact that this project gets pretty into C# and Unity dev.
 
@@ -33,4 +33,4 @@ Opening the temple door and finding the treasures within wins the Maze game.
 * C#
 * Google VR SDK
 
-![Screenshot](http://i.imgur.com/xGpqkui.jpg "Screenshot")
+![Screenshot](http://i.imgur.com/xGpqkui.jpg "Screenshot2")
