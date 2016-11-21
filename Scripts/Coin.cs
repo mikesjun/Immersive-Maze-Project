@@ -63,7 +63,7 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
 		// Destroy this coin. Check the Unity documentation on how to use Destroy
 		// Instatiate the CoinPoof Prefab where this key is located
 		if (this.gameObject != null) {
-			Instantiate (CoinPoof, transform.position, transform.rotation);
+			Instantiate (CoinPoof, transform.position, Quaternion.Euler(-90, 0, 0));
 			//Ding sounds
 			AnimationSound.Play ();
 

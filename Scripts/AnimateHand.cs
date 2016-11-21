@@ -63,7 +63,7 @@ public class AnimateHand : MonoBehaviour, IGvrGazeResponder {
 	/// Called when the viewer's trigger is used, between OnGazeEnter and OnGazeExit.
 	public void OnGazeTrigger() {
 		// Instatiate the KeyPoof Prefab where this key is located
-		Instantiate (KeyPoof, transform.position, transform.rotation);
+		Instantiate (KeyPoof, transform.position, Quaternion.Euler(-90, 0, 0));
 		//transform.Translate (0, 10 * Time.deltaTime, 0, Space.World);
 			
 		gameObject.GetComponent<AudioSource>().Play();
@@ -72,7 +72,7 @@ public class AnimateHand : MonoBehaviour, IGvrGazeResponder {
 
 		//Hide object
 		gameObject.GetComponent<MeshRenderer> ().enabled = false;
-		Debug.Log (gameObject.name + " has been destroyed");
+		//Debug.Log (gameObject.name + " has been destroyed");
 		//sets gaze to false :D
 		SetGazedAt (false);
 	}
