@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
 	// Const for our animation speed
 	[Header("Animation")]
 	public float ROTATION_SPEED = 60f;
-	public GameObject KeyPoof;
+	public GameObject CoinPoof;
 
 	[SerializeField]
 	private AudioSource AnimationSound = null;
@@ -33,14 +33,7 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
 		GetComponent<Renderer>().material.color = gazedAt ? Color.white : Color.gray;
 	}
 
-    //Create a reference to the CoinPoofPrefab
-
-    public void OnCoinClicked() {
-		// Using IGvrGaze for this ---
-        // Instantiate the CoinPoof Prefab where this coin is located
-        // Make sure the poof animates vertically
-        // Destroy this coin. Check the Unity documentation on how to use Destroy
-    }
+    
 
 	#region IGvrGazeResponder implementation
 
@@ -56,19 +49,28 @@ public class Coin : MonoBehaviour, IGvrGazeResponder
 	/// was already called.
 	public void OnGazeExit() {
 		SetGazedAt(false);
-		if(this.gameObject != null){
-			gameObject.GetComponent<MeshRenderer>().enabled = false;
-		} 
+		//if(this.gameObject != null){
+		//	gameObject.GetComponent<MeshRenderer>().enabled = false;
+		//} 
 		//Destroy (this.gameObject);
 	}
 
 	/// Called when the viewer's trigger is used, between OnGazeEnter and OnGazeExit.
 	public void OnGazeTrigger() {
 		SetGazedAt(true);
-		// Instatiate the KeyPoof Prefab where this key is located
-		Instantiate (KeyPoof, transform.position, transform.rotation);
-		//Ding sounds
-		AnimationSound.Play();
+		// Using IGvrGaze for this ---
+		// Make sure the poof animates vertically
+		// Destroy this coin. Check the Unity documentation on how to use Destroy
+		// Instatiate the CoinPoof Prefab where this key is located
+		if (this.gameObject != null) {
+			Instantiate (CoinPoof, transform.position, transform.rotation);
+			//Ding sounds
+			AnimationSound.Play ();
+
+			gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+			Debug.Log ("Triggered OnGaze");
+		}
 
 	}
 

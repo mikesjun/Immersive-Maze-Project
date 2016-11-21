@@ -14,19 +14,19 @@ public class AnimateHand : MonoBehaviour, IGvrGazeResponder {
 
 
 	//[SerializeField]
-	//private AudioSource AnimationSound = null;
+	private AudioSource AnimationSound = null;
 
 
-	[Header("Sounds")]
-	public AudioClip clip_gaze	= null;
+	//[Header("Sounds")]
+	public AudioClip clip_click	= null;
 
 
 	// Use this for initialization
 	void Awake() {
 		SetGazedAt(false);
-//		AnimationSound = gameObject.GetComponent<AudioSource>();	
-//		AnimationSound.clip = clip_gaze;
-//		AnimationSound.playOnAwake 	= false;
+		AnimationSound = gameObject.GetComponent<AudioSource>();	
+		AnimationSound.clip = clip_click;
+		AnimationSound.playOnAwake 	= false;
 	}
 	
 	// Hand animation is called once per frame - may have to refactor to only rotate when gazed at

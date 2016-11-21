@@ -7,7 +7,7 @@ public class Door : MonoBehaviour
 	public SignPost signpost = null;
 	public bool locked 	= true;
 
-	//origisnal color
+	//original color
 	private Color color_original	= Color.clear;
 
 	void Awake()
@@ -42,7 +42,7 @@ public class Door : MonoBehaviour
 	public void Enter()
 	{
 		//check to see if the door is in range of being hilighted
-		bool in_range = Vector3.Distance(gameObject.transform.position, Camera.main.transform.position) < 16.0f;
+		bool in_range = Vector3.Distance(gameObject.transform.position, Camera.main.transform.position) < 14.0f;
 
 		if(in_range)
 		{
